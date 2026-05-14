@@ -1,0 +1,199 @@
+@import "tailwindcss";
+
+/* ---------- Tailwind v4 theme tokens ---------- */
+/* Map Tailwind's color/spacing/radius scales onto our CSS vars so utilities
+   like bg-bg, text-fg, p-3, rounded-lg respect palette + density. */
+@theme {
+  --color-bg: var(--bg);
+  --color-bg-elev: var(--bg-elev);
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
+  --color-accent: var(--accent);
+  --color-accent-fg: var(--accent-fg);
+  --color-border: var(--border);
+  --color-danger: var(--danger);
+  --color-success: var(--success);
+
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+
+  --spacing-1: var(--space-1);
+  --spacing-2: var(--space-2);
+  --spacing-3: var(--space-3);
+  --spacing-4: var(--space-4);
+  --spacing-6: var(--space-6);
+  --spacing-8: var(--space-8);
+
+  --font-sans: var(--font-sans);
+}
+
+/* ---------- Base variables (defaults, get overridden below) ---------- */
+:root {
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+
+  --radius-sm: 0.375rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 1rem;
+
+  --danger: oklch(0.62 0.18 25);
+  --success: oklch(0.65 0.13 155);
+
+  /* density defaults (data-density="standard") */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --tap: 44px;
+  --leading: 1.5;
+}
+
+/* ---------- Palettes (light) ---------- */
+[data-palette="peach"] {
+  --bg: rgb(255, 244, 232);
+  --bg-elev: oklch(0.99 0.012 55);
+  --fg: oklch(0.25 0.02 30);
+  --fg-muted: oklch(0.5 0.03 40);
+  --accent: oklch(0.72 0.14 40);
+  --accent-fg: oklch(0.99 0 0);
+  --border: oklch(0.92 0.02 50);
+}
+
+[data-palette="calm"] {
+  --bg: oklch(0.98 0.008 230);
+  --bg-elev: oklch(0.995 0.006 230);
+  --fg: oklch(0.27 0.025 240);
+  --fg-muted: oklch(0.52 0.03 235);
+  --accent: oklch(0.62 0.12 230);
+  --accent-fg: oklch(0.99 0 0);
+  --border: oklch(0.92 0.015 230);
+}
+
+[data-palette="soft"] {
+  --bg: oklch(0.98 0 0);
+  --bg-elev: oklch(0.995 0 0);
+  --fg: oklch(0.27 0.005 280);
+  --fg-muted: oklch(0.55 0.01 280);
+  --accent: oklch(0.6 0.08 290);
+  --accent-fg: oklch(0.99 0 0);
+  --border: oklch(0.92 0.005 280);
+}
+
+/* ---------- Palettes (dark) ---------- */
+.dark[data-palette="peach"] {
+  --bg: oklch(0.18 0.015 40);
+  --bg-elev: oklch(23.571% 0.02063 39.17);
+  --fg: oklch(0.96 0.01 50);
+  --fg-muted: oklch(0.72 0.025 45);
+  --accent: oklch(0.78 0.13 45);
+  --accent-fg: oklch(0.18 0.015 40);
+  --border: oklch(0.3 0.02 40);
+}
+
+.dark[data-palette="calm"] {
+  --bg: oklch(0.18 0.015 235);
+  --bg-elev: oklch(0.22 0.018 235);
+  --fg: oklch(0.96 0.008 230);
+  --fg-muted: oklch(0.72 0.02 235);
+  --accent: oklch(0.72 0.11 230);
+  --accent-fg: oklch(0.18 0.015 235);
+  --border: oklch(0.3 0.018 235);
+}
+
+.dark[data-palette="soft"] {
+  --bg: oklch(0.18 0.005 280);
+  --bg-elev: oklch(0.22 0.005 280);
+  --fg: oklch(0.96 0.003 280);
+  --fg-muted: oklch(0.72 0.008 280);
+  --accent: oklch(0.7 0.07 290);
+  --accent-fg: oklch(0.18 0.005 280);
+  --border: oklch(0.3 0.005 280);
+}
+
+/* ---------- Density ---------- */
+[data-density="calm"] {
+  --space-1: 0.375rem;
+  --space-2: 0.75rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-6: 2rem;
+  --space-8: 3rem;
+  --tap: 52px;
+  --leading: 1.65;
+}
+
+[data-density="standard"] {
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --tap: 44px;
+  --leading: 1.5;
+}
+
+[data-density="compact"] {
+  --space-1: 0.125rem;
+  --space-2: 0.375rem;
+  --space-3: 0.5rem;
+  --space-4: 0.75rem;
+  --space-6: 1rem;
+  --space-8: 1.5rem;
+  --tap: 40px;
+  --leading: 1.4;
+}
+
+/* ---------- Kind mode ----------
+   Subtle softening: rounder corners, gentler contrast, slightly larger
+   line-height. Designed to be visually felt, not announced. */
+[data-kind="on"] {
+  --radius-sm: 0.5rem;
+  --radius-md: 0.875rem;
+  --radius-lg: 1.25rem;
+  --leading: calc(var(--leading) + 0.05);
+}
+
+[data-kind="on"] .dark {
+  --fg-muted: oklch(0.78 0.02 240);
+}
+
+/* ---------- Base ---------- */
+html,
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  line-height: var(--leading);
+  -webkit-font-smoothing: antialiased;
+  text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100dvh;
+}
+
+/* Tap targets respect density */
+button,
+a[role="button"],
+[data-tap] {
+  min-height: var(--tap);
+}
+
+/* Kind mode: reduced motion. Disables all transitions and animations. */
+[data-reduce-motion="on"] *,
+[data-reduce-motion="on"] *::before,
+[data-reduce-motion="on"] *::after {
+  transition-duration: 0ms !important;
+  animation-duration: 0ms !important;
+  animation-iteration-count: 1 !important;
+  scroll-behavior: auto !important;
+}
+
+/* Kind mode: larger text. Bumps base font size by ~12%. */
+[data-font-size="large"] {
+  font-size: 112.5%; /* 16px → 18px at default browser size */
+}
