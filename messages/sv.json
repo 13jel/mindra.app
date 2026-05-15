@@ -385,5 +385,19 @@
     "kindHideCounts_description": "Döljer set-räkning och andra siffror när de inte behövs.",
     "kindWordCheckIn_title": "Ordbaserad incheckning",
     "kindWordCheckIn_description": "Ersätter smärtreglaget med enkla ord."
+  },
+  "cloud": {
+    "title": "Molnbackup",
+    "blurb": "Logga in för att spara din data och synka mellan enheter. Din data är lokal tills du loggar in.",
+    "emailPlaceholder": "din@email.se",
+    "sendLink": "Skicka länk",
+    "sending": "Skickar…",
+    "linkSentTitle": "Kolla din e-post",
+    "linkSentBlurb": "Vi skickade en inloggningslänk till {email}. Öppna den på den här enheten.",
+    "useDifferentEmail": "Använd en annan e-post",
+    "signedInTitle": "Inloggad",
+    "signedInBlurb": "Inloggad. Databackup kommer i nästa uppdatering.",    
+    "signOut": "Logga ut",
+    "signedOut": "Utloggad"
   }
 }

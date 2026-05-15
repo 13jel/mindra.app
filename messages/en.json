@@ -383,5 +383,19 @@
     "kindHideCounts_description": "Hides set counts and other tallies when not essential.",
     "kindWordCheckIn_title": "Word-based check-in",
     "kindWordCheckIn_description": "Replaces the pain slider with simple words."
+  },
+  "cloud": {
+    "title": "Cloud backup",
+    "blurb": "Sign in to back up your data and sync across devices. Your data stays local until you sign in.",
+    "emailPlaceholder": "your@email.com",
+    "sendLink": "Send link",
+    "sending": "Sending…",
+    "linkSentTitle": "Check your email",
+    "linkSentBlurb": "We sent a sign-in link to {email}. Open it on this device.",
+    "useDifferentEmail": "Use a different email",
+    "signedInTitle": "Signed in",
+    "signedInBlurb": "Signed in. Data backup will be enabled in the next update.",
+    "signOut": "Sign out",
+    "signedOut": "Signed out"
   }
 }

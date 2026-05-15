@@ -18,15 +18,17 @@ function deriveDefaults(locale: string): {
 
 /**
  * Pure read. Returns the row or null. Safe to call inside useLiveQuery
- * (no writes). Backfills kind-mode fields for rows written before they
- * existed, so existing users don't see undefined when those flags were
- * added in a later schema version.
+ * (no writes). Backfills fields for rows written before they existed,
+ * so existing users don't see undefined when fields were added in a
+ * later schema version.
  */
 export async function readPreferences(): Promise<Preferences | null> {
   const row = await db.preferences.get(PREF_ID);
   if (!row || row.deleted_at !== null) return null;
   return {
     ...row,
+    display_name: row.display_name ?? "",
+    rest_default_s: row.rest_default_s ?? 90,
     kindMode: row.kindMode ?? false,
     kindSoftLanguage: row.kindSoftLanguage ?? false,
     kindReducedMotion: row.kindReducedMotion ?? false,
@@ -49,6 +51,8 @@ export async function ensurePreferences(locale: string): Promise<Preferences> {
   const now = new Date().toISOString();
   const row: Preferences = {
     id: PREF_ID,
+    display_name: "",
+    rest_default_s: 90,
     weekStart: defaults.weekStart,
     units: defaults.units,
     kindMode: false,
@@ -70,6 +74,8 @@ export async function updatePreferences(
   patch: Partial<
     Pick<
       Preferences,
+      | "display_name"
+      | "rest_default_s"
       | "weekStart"
       | "units"
       | "kindMode"
@@ -87,6 +93,8 @@ export async function updatePreferences(
   if (!existing) {
     await db.preferences.put({
       id: PREF_ID,
+      display_name: patch.display_name ?? "",
+      rest_default_s: patch.rest_default_s ?? 90,
       weekStart: patch.weekStart ?? "mon",
       units: patch.units ?? "metric",
       kindMode: patch.kindMode ?? false,

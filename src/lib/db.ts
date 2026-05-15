@@ -63,11 +63,10 @@ export type Units = "metric" | "imperial";
 
 export interface Preferences {
   id: "default";
+  display_name: string;
+  rest_default_s: number;
   weekStart: WeekStart;
   units: Units;
-  // Kind mode master + per-feature flags.
-  // Master "on" forces all features active regardless of individual flags;
-  // master "off" honors each feature's individual value.
   kindMode: boolean;
   kindSoftLanguage: boolean;
   kindReducedMotion: boolean;
@@ -144,6 +143,22 @@ class MindraDB extends Dexie {
 
     this.version(6).stores({
       preferences: "id, updated_at",
+    });
+
+    this.version(7).stores({
+      preferences: "id, updated_at",
+    }).upgrade(async (tx) => {
+      await tx.table("preferences").toCollection().modify((row) => {
+        if (row.display_name === undefined) row.display_name = "";
+        if (row.rest_default_s === undefined) row.rest_default_s = 90;
+        if (row.kindMode === undefined) row.kindMode = false;
+        if (row.kindSoftLanguage === undefined) row.kindSoftLanguage = false;
+        if (row.kindReducedMotion === undefined) row.kindReducedMotion = false;
+        if (row.kindLargerText === undefined) row.kindLargerText = false;
+        if (row.kindHideTotals === undefined) row.kindHideTotals = false;
+        if (row.kindHideCounts === undefined) row.kindHideCounts = false;
+        if (row.kindWordCheckIn === undefined) row.kindWordCheckIn = false;
+      });
     });
 
     }
