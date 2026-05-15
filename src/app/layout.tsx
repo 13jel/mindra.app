@@ -4,6 +4,7 @@ import { getLocale, getMessages } from "next-intl/server";
 import { Providers } from "@/components/Providers";
 import { ThemeBootstrap } from "@/components/ThemeBootstrap";
 import { applyThemeScript } from "@/lib/applyThemeScript";
+import { SyncIndicator } from "@/components/SyncIndicator";
 import "./global.css";
 
 export const metadata: Metadata = {
@@ -49,6 +50,7 @@ export default async function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: applyThemeScript }} />
       </head>
       <body className="bg-bg text-fg min-h-dvh antialiased">
+        <SyncIndicator />
         <NextIntlClientProvider locale={locale} messages={messages}>
           <Providers>
             <ThemeBootstrap />

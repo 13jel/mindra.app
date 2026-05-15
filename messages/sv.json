@@ -334,6 +334,19 @@
     "body2": "Vid oroande smärta, nya symtom eller besvär som påverkar din vardag — prata med en läkare eller fysioterapeut. För akut vägledning kan du ringa 1177. De kan göra det Mindra inte kan.",
     "short": "Mindra spårar mönster. Det är inte medicinsk rådgivning. Vid oroande symtom, prata med en läkare eller fysioterapeut."
   },
+  "sync": {
+    "backingUp": "Säkerhetskopierar dina data…",
+    "syncing": "Synkar — {count, plural, one {# objekt} other {# objekt}}",
+    "allSynced": "Allt synkat — senast sparat {time}",
+    "offline": "Når inte molnet — försöker igen",
+    "error": "Synkfel — {message}",
+    "retry": "Försök igen",
+    "notSignedInPrompt": "Säkerhetskopiera dina data till molnet",
+    "syncing_kind": "Säkerhetskopierar…",
+    "allSynced_kind": "Allt är säkerhetskopierat",
+    "offline_kind": "Kunde inte nå molnet just nu — vi fortsätter försöka",
+    "error_kind": "Kunde inte säkerhetskopiera — vi fortsätter försöka"
+  },
   "quotes": {
     "q1": "Du dök upp. Det är det viktigaste.",
     "q2": "Idag räknas. Även om det var mindre än du önskat.",

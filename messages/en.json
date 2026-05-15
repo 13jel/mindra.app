@@ -332,6 +332,19 @@
     "body2": "If you're experiencing concerning pain, new symptoms, or anything affecting your daily life, talk to a doctor or physiotherapist. They can do what Mindra can't.",
     "short": "Mindra tracks patterns. It isn't medical advice. For concerning symptoms, talk to a clinician."
   },
+  "sync": {
+    "backingUp": "Backing up your data…",
+    "syncing": "Syncing — {count, plural, one {# item} other {# items}}",
+    "allSynced": "All synced — last backed up at {time}",
+    "offline": "Can't reach the cloud — will retry",
+    "error": "Sync error — {message}",
+    "retry": "Try again",
+    "notSignedInPrompt": "Back up your data to the cloud",
+    "syncing_kind": "Backing up…",
+    "allSynced_kind": "Your data is safe",
+    "offline_kind": "Couldn't reach the cloud right now — we'll keep trying",
+    "error_kind": "Couldn't back up — we'll keep trying"
+  },
   "quotes": {
     "q1": "You showed up. That's the whole thing.",
     "q2": "Today counts. Even if it was small.",

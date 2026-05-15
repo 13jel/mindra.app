@@ -13,6 +13,7 @@
   --color-border: var(--border);
   --color-danger: var(--danger);
   --color-success: var(--success);
+  --color-warning: var(--warning);
 
   --radius-sm: var(--radius-sm);
   --radius-md: var(--radius-md);
@@ -39,6 +40,7 @@
 
   --danger: oklch(0.62 0.18 25);
   --success: oklch(0.65 0.13 155);
+  --warning: oklch(0.75 0.14 75);
 
   /* density defaults (data-density="standard") */
   --space-1: 0.25rem;
