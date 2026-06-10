@@ -220,18 +220,26 @@ function SyncStatus({
   }
 
   // Idle / all synced
-  if (kind) {
-    return <p className="text-sm text-fg-muted">{tSync("allSynced_kind")}</p>;
-  }
-  const time = syncState.lastSyncedAt
-    ? new Date(syncState.lastSyncedAt).toLocaleTimeString(undefined, {
-        hour: "2-digit",
-        minute: "2-digit",
-      })
-    : "—";
-  return (
-    <p className="text-sm text-fg-muted">
-      {tSync("allSynced", { time })}
-    </p>
-  );
+if (kind) {
+  return <p className="text-sm text-fg-muted">{tSync("allSynced_kind")}</p>;
 }
+const time = syncState.lastSyncedAt
+  ? new Date(syncState.lastSyncedAt).toLocaleTimeString(undefined, {
+      hour: "2-digit",
+      minute: "2-digit",
+    })
+  : "—";
+const pullTime = syncState.lastPulledAt
+  ? new Date(syncState.lastPulledAt).toLocaleTimeString(undefined, {
+      hour: "2-digit",
+      minute: "2-digit",
+    })
+  : null;
+return (
+  <div className="text-sm text-fg-muted">
+    <p>{tSync("allSynced", { time })}</p>
+    {pullTime && (
+      <p className="text-xs">{tSync("lastPulled", { time: pullTime })}</p>
+    )}
+  </div>
+);}

@@ -1,3 +1,4 @@
+// db.ts
 import Dexie, { type EntityTable } from "dexie";
 import type { SyncMeta, WithSyncMeta } from "./sync-types";
 import { newId, nowIso } from "./sync-types";

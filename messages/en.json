@@ -343,7 +343,8 @@
     "syncing_kind": "Backing up…",
     "allSynced_kind": "Your data is safe",
     "offline_kind": "Couldn't reach the cloud right now — we'll keep trying",
-    "error_kind": "Couldn't back up — we'll keep trying"
+    "error_kind": "Couldn't back up — we'll keep trying",
+    "lastPulled": "Last checked for updates {time}"
   },
   "quotes": {
     "q1": "You showed up. That's the whole thing.",

@@ -345,7 +345,8 @@
     "syncing_kind": "Säkerhetskopierar…",
     "allSynced_kind": "Allt är säkerhetskopierat",
     "offline_kind": "Kunde inte nå molnet just nu — vi fortsätter försöka",
-    "error_kind": "Kunde inte säkerhetskopiera — vi fortsätter försöka"
+    "error_kind": "Kunde inte säkerhetskopiera — vi fortsätter försöka",
+    "lastPulled": "Senast hämtat {time}"
   },
   "quotes": {
     "q1": "Du dök upp. Det är det viktigaste.",

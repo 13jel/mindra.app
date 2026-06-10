@@ -1,3 +1,4 @@
+// backfill.ts
 "use client";
 
 import { db } from "@/lib/db";
@@ -139,18 +140,15 @@ export async function runBackfill(
 ): Promise<BackfillState> {
   const current = getBackfillState(userId);
   if (current.kind === "done") return current;
-  if (current.kind === "skipped") return current;
+  // Note: we no longer skip on cloud_not_empty. With pull-first, cloud
+  // having data is normal; we just push any locally-dirty rows.
+  if (current.kind === "skipped" && current.reason === "device_already_backfilled") {
+    return current;
+  }
 
   setState(userId, "in_progress");
 
   try {
-    const cloudPopulated = await cloudHasAnyData();
-    if (cloudPopulated) {
-      setState(userId, "skipped:cloud_not_empty");
-      setGlobalHasRun();
-      return { kind: "skipped", reason: "cloud_not_empty" };
-    }
-
     await nullOrphanReferences();
 
     const dirtied = await markAllLocalDirty();
@@ -160,7 +158,6 @@ export async function runBackfill(
     setGlobalHasRun();
     return { kind: "done" };
   } catch (err) {
-    // Leave state as `in_progress` so a retry happens on next sign-in.
     const message = err instanceof Error ? err.message : String(err);
     console.error("[mindra] backfill failed", err);
     return { kind: "error", message };

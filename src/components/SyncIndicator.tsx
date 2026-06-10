@@ -89,6 +89,14 @@ function pickIndicator(
     };
   }
 
+  if (sync.status === "pulling") {
+    return {
+      dotClass: "bg-fg-muted",
+      pulse: true,
+      ariaLabel: "Checking for updates",
+    };
+  }
+
   if (sync.status === "syncing" && sync.pendingCount > 0) {
     return {
       dotClass: "bg-fg-muted",

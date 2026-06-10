@@ -1,3 +1,4 @@
+// types.ts
 import type { Workout, Exercise, WorkoutSet, LibraryExercise, Pattern, CheckIn, Preferences } from "@/lib/db";
 
 /**
